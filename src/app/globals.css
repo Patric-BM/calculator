@@ -4,9 +4,8 @@
 
 @font-face {
   font-family: 'RobotoMono';
-  src: url('/fonts/RobotoMono-Regular.ttf') format('truetype');
+  src: url('../fonts/RobotoMono-VariableFont_wght.ttf');
 }
-
 * {
   font-family: 'RobotoMono', monospace;
 }
