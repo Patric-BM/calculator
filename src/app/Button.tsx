@@ -9,8 +9,8 @@ export default function Button({
 }>) {
   return (
     <button
-      className={`px-4 py-2 bg-slate-200 border text-zinc-500 border-zinc-400 outline-none
-       active:bg-slate-300 ${classNameStyle}`}
+      className={`px-4 py-2 border border-zinc-400 outline-none
+        ${classNameStyle ?? " bg-slate-200 text-zinc-500 active:bg-slate-300"}`}
         onClick={() => onButtonClick(label)}
     >
       {label}

@@ -18,21 +18,22 @@ function Calculator() {
   const addDigit = (digit: string) => {
     setState((prevState) => {
       if (digit === "." && prevState.displayValue.includes(".")) {
-        return prevState; 
+        return prevState;
       }
-  
-      const clearDisplay = prevState.displayValue === "0" || prevState.clearDisplay;
+
+      const clearDisplay =
+        prevState.displayValue === "0" || prevState.clearDisplay;
       const currentValue = clearDisplay ? "" : prevState.displayValue;
       const displayValue = currentValue + digit;
-  
+
       if (digit !== ".") {
         const i = prevState.current;
         const newValue = parseFloat(displayValue);
         const values = [...prevState.values];
         values[i] = newValue;
-        return { ...prevState, displayValue, clearDisplay: false, values }; 
+        return { ...prevState, displayValue, clearDisplay: false, values };
       } else {
-        return { ...prevState, displayValue, clearDisplay: false }; 
+        return { ...prevState, displayValue, clearDisplay: false };
       }
     });
   };
@@ -47,19 +48,17 @@ function Calculator() {
       try {
         values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`);
       } catch (e) {
-
         values[0] = state.values[0];
       }
 
       values[1] = 0;
-        setState({
-            displayValue: values[0].toString(),
-            operation: equals ? "" : op,
-            current: equals ? 0 : 1,
-            clearDisplay: !equals,
-            values,
-        });
-
+      setState({
+        displayValue: values[0].toString(),
+        operation: equals ? "" : op,
+        current: equals ? 0 : 1,
+        clearDisplay: !equals,
+        values,
+      });
     }
   };
 
@@ -70,11 +69,15 @@ function Calculator() {
   return (
     <div className="h-80 w-60 rounded-md overflow-hidden grid grid-cols-4 grid-rows-5x48">
       <Display value={state.displayValue} />
-      <Button label="AC" onButtonClick={clearMemory} classNameStyle="col-span-3" />
+      <Button
+        label="AC"
+        onButtonClick={clearMemory}
+        classNameStyle="col-span-3 bg-slate-200 text-zinc-500 active:bg-slate-300"
+      />
       <Button
         label="/"
         onButtonClick={setOperation}
-       
+        classNameStyle="bg-orange-500 text-white active:bg-orange-800"
       />
       <Button label="7" onButtonClick={addDigit} />
       <Button label="8" onButtonClick={addDigit} />
@@ -82,6 +85,7 @@ function Calculator() {
       <Button
         label="*"
         onButtonClick={setOperation}
+        classNameStyle="bg-orange-500 text-white active:bg-orange-800"
       />
       <Button label="4" onButtonClick={addDigit} />
       <Button label="5" onButtonClick={addDigit} />
@@ -89,6 +93,7 @@ function Calculator() {
       <Button
         label="-"
         onButtonClick={setOperation}
+        classNameStyle="bg-orange-500 text-white active:bg-orange-800"
       />
       <Button label="1" onButtonClick={addDigit} />
       <Button label="2" onButtonClick={addDigit} />
@@ -96,12 +101,20 @@ function Calculator() {
       <Button
         label="+"
         onButtonClick={setOperation}
+        classNameStyle="bg-orange-500 text-white active:bg-orange-800"
       />
-      <Button label="0" onButtonClick={addDigit} classNameStyle="col-span-2" />
+      <Button
+        label="0"
+        onButtonClick={addDigit}
+        classNameStyle="col-span-2 bg-slate-200 text-zinc-500 active:bg-slate-300"
+      />
       <Button label="." onButtonClick={addDigit} />
-      <Button label="=" onButtonClick={setOperation} />
+      <Button
+        label="="
+        onButtonClick={setOperation}
+        classNameStyle="bg-orange-500 text-white active:bg-orange-800"
+      />
     </div>
   );
 }
-
 export default Calculator;
