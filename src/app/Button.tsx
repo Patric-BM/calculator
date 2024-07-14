@@ -9,7 +9,7 @@ export default function Button({
 }>) {
   return (
     <button
-      className={`px-4 py-2 rounded-md bg-slate-200 text-zinc-500 border-none outline-none
+      className={`px-4 py-2 bg-slate-200 border text-zinc-500 border-zinc-400 outline-none
        active:bg-slate-300 ${className}`}
         onClick={() => onButtonClick(label)}
     >
